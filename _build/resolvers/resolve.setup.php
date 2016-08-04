@@ -63,9 +63,13 @@ if (!function_exists('installPackage')) {
 					}
 
 					if ($package->save() && $package->install()) {
+						if ($packageName == "translit") {
+							if (copy($modx->getOption('core_path') . 'components/mdpafterinstall/elements/translit/tables/russian_yandex.php',$modx->getOption('core_path') . 'components/translit/model/modx/translit/tables/russian_yandex.php')) $translit_table = "<b>russian_yandex.php</b> was successfully added to translit";
+							else $translit_table = 'Could not copy <b>russian_yandex.php</b> to translit tables, you need copy '.$modx->getOption('core_path') . 'components/mdpafterinstall/elements/translit/tables/russian_yandex.php to '.$modx->getOption('core_path') . 'components/translit/model/modx/translit/tables/russian_yandex.php';
+						}
 						return array(
 							'success' => 1,
-							'message' => "<b>{$packageName}</b> was successfully installed",
+							'message' => "<b>{$packageName}</b> was successfully installed<br>{$translit_table}",
 						);
 					}
 					else {

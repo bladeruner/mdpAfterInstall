@@ -105,10 +105,10 @@ if (defined('BUILD_TV_UPDATE')) {
 $vehicle = $builder->createVehicle($category, $attr);
 
 /* now pack in resolvers */
-$vehicle->resolve('file', array(
+/*$vehicle->resolve('file', array(
 	'source' => $sources['source_assets'],
 	'target' => "return MODX_ASSETS_PATH . 'components/';",
-));
+));*/
 $vehicle->resolve('file', array(
 	'source' => $sources['source_core'],
 	'target' => "return MODX_CORE_PATH . 'components/';",
@@ -139,14 +139,15 @@ $builder->setPackageAttributes(array(
 	'readme' => file_get_contents($sources['docs'] . 'readme.txt'),	
 	'snippets' => array(		
 		'Ace' => '',
-		'AjaxManager' => '',
 		'autoRedirector' => '',
 		'ClientConfig' => '',
 		'FormIt' => '',		
+		'MIGX' => '',
 		'MinifyX' => '',
 		'modLastModified' => '',
 		'pdoTools' => '',
-		'phpThumbOn' => ''
+		'phpThumbOn' => '',
+		'TinyMCE Rich Text Editor' => ''
 	),
 	'setup-options' => array(
 		'source' => $sources['build'] . 'setup.options.php',
